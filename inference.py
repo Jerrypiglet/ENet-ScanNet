@@ -101,6 +101,10 @@ class Inference:
 
 				# Loss computation
 				loss = self.criterion(outputs, labels)
+				# print(outputs.shape, labels.shape)
+				# print(labels)
+				# print(torch.amax(labels), torch.amin(labels), labels.dtype)
+				# print(loss)
 
 				if self.generate_images is True:
 					bs = len(data_path)
@@ -235,7 +239,7 @@ def load_dataset(dataset):
 			ignore_index = list(class_encoding).index('unlabeled')
 			class_weights[ignore_index] = 0
 
-	print("Class weights:", class_weights)
+	print("Class weights:", class_weights, class_weights.shape)
 
 	return test_loader, class_weights, class_encoding
 

@@ -2,7 +2,7 @@ import os
 from collections import OrderedDict
 import torch.utils.data as data
 from . import utils
-
+import numpy as np
 
 class ScanNet(data.Dataset):
 	"""ScanNet dataset http://www.scan-net.org/

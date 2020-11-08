@@ -119,10 +119,12 @@ def scannet_loader(data_path, label_path, color_mean=[0.,0.,0.], color_std=[1.,1
 	# Load label
 	if seg_classes.lower() == 'nyu40':
 		label = np.array(imageio.imread(label_path)).astype(np.uint8)
+		label[label > 40] = 0
 	elif seg_classes.lower() == 'scannet20':
 		label = np.array(imageio.imread(label_path)).astype(np.uint8)
 		# Remap classes from 'nyu40' to 'scannet20'
 		label = nyu40_to_scannet20(label)
+		label[label > 20] = 0
 
 	return data, label
 
@@ -162,10 +164,12 @@ def scannet_loader_depth(data_path, depth_path, label_path, color_mean=[0.,0.,0.
 	# Load label
 	if seg_classes.lower() == 'nyu40':
 		label = np.array(imageio.imread(label_path)).astype(np.uint8)
+		label[label > 40] = 0
 	elif seg_classes.lower() == 'scannet20':
 		label = np.array(imageio.imread(label_path)).astype(np.uint8)
 		# Remap classes from 'nyu40' to 'scannet20'
 		label = nyu40_to_scannet20(label)
+		label[label > 20] = 0
 
 	return data, label
 
