@@ -22,7 +22,7 @@ def print_error(message, user_fault=False):
 
 # if string s represents an int
 def represents_int(s):
-    try: 
+    try:
         int(s)
         return True
     except ValueError:
@@ -30,13 +30,13 @@ def represents_int(s):
 
 
 def read_label_mapping(filename, label_from='raw_category', label_to='nyu40id'):
-    assert os.path.isfile(filename)
+    assert os.path.isfile(filename), '%s not exist!'%filename
     mapping = dict()
     with open(filename) as csvfile:
         reader = csv.DictReader(csvfile, delimiter='\t')
         for row in reader:
             mapping[row[label_from]] = int(row[label_to])
-    # if ints convert 
+    # if ints convert
     if represents_int(list(mapping.keys())[0]):
         mapping = {int(k):v for k,v in mapping.items()}
     return mapping
@@ -51,7 +51,7 @@ def read_scene_types_mapping(filename, remove_spaces=True):
     if remove_spaces:
         mapping = { x[1].strip():int(x[0]) for x in lines }
     else:
-        mapping = { x[1]:int(x[0]) for x in lines }        
+        mapping = { x[1]:int(x[0]) for x in lines }
     return mapping
 
 
@@ -94,20 +94,20 @@ def create_color_palette():
        (148, 103, 189),		# bookshelf
        (196, 156, 148),		# picture
        (23, 190, 207), 		# counter
-       (178, 76, 76),  
+       (178, 76, 76),
        (247, 182, 210),		# desk
-       (66, 188, 102), 
+       (66, 188, 102),
        (219, 219, 141),		# curtain
-       (140, 57, 197), 
-       (202, 185, 52), 
-       (51, 176, 203), 
-       (200, 54, 131), 
-       (92, 193, 61),  
-       (78, 71, 183),  
-       (172, 114, 82), 
+       (140, 57, 197),
+       (202, 185, 52),
+       (51, 176, 203),
+       (200, 54, 131),
+       (92, 193, 61),
+       (78, 71, 183),
+       (172, 114, 82),
        (255, 127, 14), 		# refrigerator
-       (91, 163, 138), 
-       (153, 98, 156), 
+       (91, 163, 138),
+       (153, 98, 156),
        (140, 153, 101),
        (158, 218, 229),		# shower curtain
        (100, 125, 154),
@@ -116,10 +116,10 @@ def create_color_palette():
        (146, 111, 194),
        (44, 160, 44),  		# toilet
        (112, 128, 144),		# sink
-       (96, 207, 209), 
+       (96, 207, 209),
        (227, 119, 194),		# bathtub
-       (213, 92, 176), 
-       (94, 106, 211), 
+       (213, 92, 176),
+       (94, 106, 211),
        (82, 84, 163),  		# otherfurn
        (100, 85, 144)
     ]

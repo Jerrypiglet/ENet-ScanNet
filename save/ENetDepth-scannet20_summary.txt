@@ -5,10 +5,11 @@ beta0: 0.7
 beta1: 0.999
 class_weights_file: cache/class_weights_scannet20.txt
 dataset: scannet
-dataset_dir: /path/to/scannet/scannetv2_images/
+dataset_dir: /newfoundland2/ruizhu/scannet/labels_2d_240x320
 device: cuda
 epochs: 100
 height: 240
+width: 320
 ignore_unlabeled: True
 imshow_batch: False
 learning_rate: 0.001
@@ -26,7 +27,6 @@ valFile: cache/test.txt
 validate_every: 10
 weighing: ENet
 weight_decay: 0.0002
-width: 320
 workers: 4
 
 BEST VALIDATION
